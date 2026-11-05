@@ -1,4 +1,4 @@
-/* Variables */
+/* Tokens */
 :root {
   --color-body: rgb(161 0 0 / 30%);
   --color-background: #FCFCFC;
@@ -52,18 +52,22 @@ body {
   border: solid 1px var(--color-background);
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
+#main-content {
   margin-inline: auto;
 
   width: 100%;
   max-width: 1280px;
+
+  background-color: var(--color-background);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
   padding: 48px 48px 64px 48px;
   gap: 24px;
   margin-bottom: 64px;
-
-  background-color: var(--color-background);
 }
 
 .description {
@@ -86,7 +90,8 @@ body {
   gap: 16px;
 }
 
-.content h1 {
+/* Text styling */
+h1 {
   font-weight: 700;
   font-style: bold;
   font-size: 28px;
@@ -94,7 +99,7 @@ body {
   line-height: 38px;
 }
 
-.content h2 {
+h2 {
   font-weight: 700;
   font-style: bold;
   font-size: 24px;
@@ -102,28 +107,29 @@ body {
   line-height: 33px;
 }
 
-.content p,
-.content li {
+p,
+li {
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
   color: var(--color-text);
 }
 
-.content p {
+p {
   line-height: 22px;
 }
 
-.content li {
+li {
   line-height: 32px;
 }
 
-.content ul,
-.content ol {
+ul,
+ol {
   list-style-position: inside;
   padding-left: 12px;
 }
 
+/* Image styling */
 .img-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

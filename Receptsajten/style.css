@@ -39,7 +39,7 @@ body {
   background-color: var(--color-body);
 }
 
-#cover-img {
+#hero-img {
   display: block;
   margin-inline: auto;
 

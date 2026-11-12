@@ -1,5 +1,6 @@
 /* TOKENS */
 :root {
+  --page-max-width: 1280px;
   --color-body: #e3b2b2;
   --color-background: #fcfcfc;
   --color-box: #ebebeb;
@@ -62,15 +63,29 @@ body {
   gap: 20px;
 
   width: 100%;
-  max-width: 1280px;
+  max-width: var(--page-max-width);
   min-height: 100vh;
 
   background-color: var(--color-background);
 }
 
+.double-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  justify-items: center;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
 /* HEADER */
 header {
-  /* padding: 0 20px; */
+  padding: 0 24px 0 0;
 
   display: flex;
   align-items: center;
@@ -110,23 +125,27 @@ header {
 
 /* MAIN */
 main {
+  display: flex;
+  flex-direction: column;
+
   padding: 20px;
+  gap: 20px;
 }
 
-#hero-img {
-  display: block;
-  margin-inline: auto;
+.index-hero {
+  img {
+    width: 100%;
+  }
+}
 
+.recipe-hero img {
   width: 100%;
-  max-width: 1280px;
-  height: 500px;
-  min-height: 500px;
+  height: 100%;
+  min-height: 0;
   object-fit: cover;
-
-  border: solid 1px var(--color-background);
 }
 
-.description {
+.recipe-description {
   display: flex;
   align-items: center;
 
@@ -135,6 +154,28 @@ main {
   gap: 10px;
 
   background-color: var(--color-box);
+}
+
+.recipe-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  padding: 0 16px;
+  gap: 12px 24px;
+
+  div {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+    padding: 16px;
+    border-radius: 10px;
+    background-color: var(--color-box);
+  }
 }
 
 .recipe-part {
@@ -146,25 +187,31 @@ main {
   gap: 16px;
 }
 
+.checkbox-ul {
+  list-style: none;
+  label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+  }
+  li:has(input:checked) {
+    text-decoration: line-through;
+  }
+}
+
+.checkbox-ol {
+  li:has(input:checked) {
+    text-decoration: line-through;
+  }
+}
+
 /* FOOTER */
 footer {
   margin-top: auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-
-.double-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  justify-items: center;
-
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
 }
 
 .categories {
@@ -181,34 +228,32 @@ footer {
 /* TEXT STYLING */
 h1 {
   font-weight: 700;
-  font-style: bold;
-  font-size: 28px;
+  font-size: 1.75rem;
   color: var(--color-text-major);
-  line-height: 38px;
+  line-height: 2.375rem;
 }
 
 h2 {
   font-weight: 700;
-  font-style: bold;
-  font-size: 24px;
+  font-size: 1.5rem;
   color: var(--color-text);
-  line-height: 33px;
+  line-height: 2rem;
 }
 
 p,
 li {
   font-weight: 400;
   font-style: normal;
-  font-size: 16px;
+  font-size: 1rem;
   color: var(--color-text);
 }
 
 p {
-  line-height: 22px;
+  line-height: 1.375rem;
 }
 
 li {
-  line-height: 32px;
+  line-height: 2rem;
 }
 
 ul,
@@ -228,7 +273,7 @@ ol {
 .img-grid img {
   width: 100%;
   min-width: 300px;
-  height: 467px;
+  max-height: 450px;
   object-fit: cover;
   background-color: var(--color-box-dark);
 }

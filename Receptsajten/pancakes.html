@@ -12,63 +12,87 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <div class="page-wrapper">
+    <!-- HEADER -->
     <header>
       <img class="logo" src="img/logo_old.png" alt="">
 
       <nav>
         <ul>
-          <li><a href="#">Recept</a></li>
+          <li><a href="index.html">Recept</a></li>
           <li><a href="#">Om sajten</a></li>
           <li><a href="share.html" class="btn">Dela recept</a></li>
         </ul>
       </nav>
     </header>
 
+
+    <!-- MAIN -->
     <main id="main-content" tabindex="-1">
-      <img id="hero-img" src="img/pannkakor-hero.jpg" alt="En tallrik med pannkakor och hallon">
+      <section class="recipe-hero double-col">
+        <img src="img/pannkakor-hero.jpg" alt="En tallrik med pannkakor och hallon">
 
-      <div class="wrapper">
-        <h1>Enkelt recept på pannkakor</h1>
+        <div>
+          <h1>Enkelt recept på pannkakor</h1>
 
-        <div class="description">
-          <p>Gör traditionella tunna pannkakor med detta enkla och goda pannkaksrecept.</p>
+          <div class="recipe-description">
+            <p>Gör traditionella tunna pannkakor med detta enkla och goda pannkaksrecept.</p>
+          </div>
+
+          <dl class="recipe-info">
+            <div>
+              <dt>Portioner:</dt>
+              <dd>4</dd>
+            </div>
+            <div>
+              <dt>Tillagningstid:</dt>
+              <dd>30 min</dd>
+            </div>
+            <div>
+              <dt>Svårighetsgrad:</dt>
+              <dd>Lätt</dd>
+            </div>
+          </dl>
         </div>
+      </section>
 
+      <div class="double-col">
         <section class="recipe-part">
           <h2>Ingredienser</h2>
           <p>För 4 portioner:</p>
-          <ul>
-            <li>2 1/2 dl vetemjöl</li>
-            <li>1/2 tsk salt</li>
-            <li>6 dl mjölk</li>
-            <li>3 ägg</li>
-            <li>smör (till stekning)</li>
-            <li>sylt, bär eller frukt till servering</li>
+          <ul class="checkbox-ul">
+            <li><label><input type="checkbox">1/2 dl vetemjöl</label></li>
+            <li><label><input type="checkbox">1/2 tsk salt</label></li>
+            <li><label><input type="checkbox">6 dl mjölk</label></li>
+            <li><label><input type="checkbox">3 ägg</label></li>
+            <li><label><input type="checkbox">smör (till stekning)</label></li>
+            <li><label><input type="checkbox">sylt, bär eller frukt till servering</label></li>
           </ul>
         </section>
 
         <section class="recipe-part">
           <h2>Så här gör du</h2>
-          <ol>
-            <li>Blanda mjöl och salt i en bunke.</li>
-            <li>Vispa i hälften av mjölken och vispa till en slät smet.</li>
-            <li>Vispa i resten av mjölken och äggen.</li>
-            <li>Låt smeten vila ca 10 minuter.</li>
-            <li>Stek tunna pannkakor i lite smör, för varje pannkaka, i en stek- eller pannkakspanna.</li>
-            <li>Servera med sylt, bär eller frukt.</li>
+          <ol class="checkbox-ol">
+            <li><label><input type="checkbox">Blanda mjöl och salt i en bunke.</label></li>
+            <li><label><input type="checkbox">Vispa i hälften av mjölken och vispa till en slät smet.</label></li>
+            <li><label><input type="checkbox">Vispa i resten av mjölken och äggen.</label></li>
+            <li><label><input type="checkbox">Låt smeten vila ca 10 minuter.</label></li>
+            <li><label><input type="checkbox">Stek tunna pannkakor i lite smör, för varje pannkaka, i en stek- eller pannkakspanna.</label></li>
+            <li><label><input type="checkbox">Servera med sylt, bär eller frukt.</label></li>
           </ol>
         </section>
-
-        <section class="recipe-part">
-          <h2>Serveringsförslag</h2>
-          <div class="img-grid">
-            <img src="img/pannkakor-img1.jpg" alt="Tallrik med pannkakor och bär">
-            <img src="img/pannkakor-img2.jpg" alt="Tallrik med pannkakor och apelsin">
-          </div>
-        </section>
       </div>
+
+      <section class="recipe-part">
+        <h2>Serveringsförslag</h2>
+        <div class="img-grid">
+          <img src="img/pannkakor-img1.jpg" alt="Tallrik med pannkakor och bär">
+          <img src="img/pannkakor-img2.jpg" alt="Tallrik med pannkakor och apelsin">
+        </div>
+      </section>
     </main>
 
+
+    <!-- FOOTER -->
     <footer>
       <div class="double-col">
         <div>

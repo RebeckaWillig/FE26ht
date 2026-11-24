@@ -1,12 +1,15 @@
-/* TOKENS */
+/* ===== TOKENS ===== */
 :root {
   --page-max-width: 1280px;
+  --form-max-width: 720px;
   --color-body: #e3b2b2;
   --color-background: #fcfcfc;
   --color-box: #ebebeb;
   --color-box-dark: #ebebeb;
   --color-text-major: #a10000;
   --color-text: black;
+  --color-border: #c0c0c0;
+  --color-border-dark: #808080;
 
   /* Fonts */
   --font-size-normal: 1rem;
@@ -22,15 +25,17 @@
   --color-btn-active: #d5d5d5;
 }
 
-/* RESET */
-* {
+/* ===== RESET ===== */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: var(--font-family);
+  font: inherit;
 }
 
-/* SKIP LINK */
+/* ===== SKIP LINK ===== */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -38,29 +43,28 @@
   z-index: 1000;
 
   padding: 0.75rem 1.5rem;
-  background: #fff;
-  color: #000;
+  background: white;
+  color: black;
   font-weight: 700;
-  border: 2px solid #000;
+  border: 2px solid black;
   border-radius: 4px;
+
+  &:focus {
+    top: 1rem;
+  }
 }
 
-.skip-link:focus {
-  top: 1rem;
-}
-
-/* PAGE STYLING */
+/* ===== PAGE STYLING ===== */
 body {
   background-color: var(--color-body);
+  font-family: var(--font-family);
 }
 
 .page-wrapper {
   display: flex;
   flex-direction: column;
 
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-inline: auto;
+  margin: 20px auto;
   padding: 20px;
   gap: 20px;
 
@@ -85,7 +89,7 @@ body {
   }
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 header {
   padding: 0 24px 0 0;
 
@@ -130,7 +134,7 @@ header {
   gap: 30px;
 }
 
-/* MAIN */
+/* ===== MAIN ===== */
 main {
   display: flex;
   flex-direction: column;
@@ -138,6 +142,8 @@ main {
   padding: 20px;
   gap: 20px;
 }
+
+/* INDEX PAGE */
 
 .index-hero {
   display: flex;
@@ -169,6 +175,8 @@ main {
     border-radius: 8px;
   }
 }
+
+/* RECIPE PAGE */
 
 .recipe-hero img {
   width: 100%;
@@ -219,27 +227,112 @@ main {
   gap: 1rem;
 }
 
+.checkbox-ul,
+.checkbox-ol {
+  label {
+    cursor: pointer;
+    span {
+      padding-left: 8px;
+    }
+
+    input[type="checkbox"] {
+      cursor: pointer;
+    }
+  }
+
+  li:has(input:checked) {
+    text-decoration: line-through;
+  }
+}
+
 .checkbox-ul {
   list-style: none;
+}
+
+/* SHARE PAGE */
+
+.share-hero {
+  display: flex;
+  justify-content: center;
+}
+
+.recipe-form {
+  max-width: var(--form-max-width);
+  display: grid;
+  margin: 0 auto;
+  padding: 1.5rem;
+  gap: 2rem;
+
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+fieldset {
+  display: grid;
+
+  gap: 1rem;
+  padding: 1rem;
+
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+
+  div {
+    gap: 1rem;
+  }
+
+  /* Ser inte så bra ut med current font */
+  /* TODO: Byt font eller ta bort */
+  /* legend,
   label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: fit-content;
+    font-weight: 700;
+  } */
+
+  &.form-about {
+    grid-template-columns: 1fr 1fr;
+
+    & > :nth-child(2),
+    & > :nth-child(3) {
+      grid-column: 1 / -1;
+    }
   }
-  li:has(input:checked) {
-    text-decoration: line-through;
+
+  &.form-difficulty {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    input,
+    label {
+      cursor: pointer;
+    }
   }
 }
 
-.checkbox-ol {
-  /* TODO: Make gap between checkbox and text */
-  li:has(input:checked) {
-    text-decoration: line-through;
-  }
+button {
+  padding: 1rem;
+  cursor: pointer;
 }
 
-/* FOOTER */
+input:not([type="checkbox"], [type="radio"]),
+select,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border-dark);
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+  border-color: #dc2626;
+}
+
+/* input:user-valid,
+select:user-valid,
+textarea:user-valid {
+  border-color: green;
+} */
+
+/* ===== FOOTER ===== */
 footer {
   margin-top: auto;
   display: flex;
@@ -251,7 +344,7 @@ footer {
   text-align: center;
 }
 
-/* TEXT STYLING */
+/* ===== TEXT STYLING ===== */
 h1 {
   font-weight: 700;
   font-size: 1.75rem;
@@ -288,7 +381,7 @@ ol {
   padding-left: 12px;
 }
 
-/* IMAGE STYLING */
+/* ===== IMAGE STYLING ===== */
 .img-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -304,9 +397,9 @@ ol {
   background-color: var(--color-box-dark);
 }
 
-/* FOR MOBILE */
+/* ===== FOR MOBILE ===== */
 @media only screen and (max-width: 500px) {
-  .content {
+  main {
     padding: 48px 16px 64px 16px;
   }
 }

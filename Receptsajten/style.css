@@ -2,19 +2,20 @@
 :root {
   --page-max-width: 1280px;
   --form-max-width: 720px;
+
+  /* Colours */
   --color-body: #e3b2b2;
   --color-background: #fcfcfc;
   --color-box: #ebebeb;
-  --color-box-dark: #ebebeb;
+  --color-box-dark: #e0e0e0;
   --color-text-major: #a10000;
   --color-text: black;
+  --color-text-checked: #606060;
   --color-border: #c0c0c0;
   --color-border-dark: #808080;
+  --color-error: #b00000;
 
   /* Fonts */
-  --font-size-normal: 1rem;
-  --font-size-large: 1.5rem;
-  --font-size-larger: 2rem;
   --font-family: "Open Sans", sans-serif;
   /* --font-family: "Courier New", Courier, monospace; */
 
@@ -33,6 +34,11 @@
   margin: 0;
   padding: 0;
   font: inherit;
+}
+
+*:focus-visible {
+  outline: 3px solid black;
+  outline-offset: 0.25rem;
 }
 
 /* ===== SKIP LINK ===== */
@@ -63,10 +69,7 @@ body {
 .page-wrapper {
   display: flex;
   flex-direction: column;
-
   margin: 20px auto;
-  padding: 20px;
-  gap: 20px;
 
   width: 100%;
   max-width: var(--page-max-width);
@@ -91,11 +94,12 @@ body {
 
 /* ===== HEADER ===== */
 header {
-  padding: 0 24px 0 0;
+  padding: 20px 44px 20px 20px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   nav ul {
     display: flex;
@@ -139,7 +143,7 @@ main {
   display: flex;
   flex-direction: column;
 
-  padding: 20px;
+  padding: 20px 40px;
   gap: 20px;
 }
 
@@ -160,6 +164,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 
   padding: 16px;
   gap: 8px;
@@ -173,6 +178,25 @@ main {
     min-height: 0;
     object-fit: cover;
     border-radius: 8px;
+  }
+
+  a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  a:focus-visible {
+    outline: none;
+  }
+
+  &:has(a:focus-visible) {
+    outline: 3px solid black;
+    outline-offset: 0.25rem;
+  }
+
+  &:hover {
+    background-color: var(--color-box-dark);
   }
 }
 
@@ -242,6 +266,7 @@ main {
 
   li:has(input:checked) {
     text-decoration: line-through;
+    color: var(--color-text-checked);
   }
 }
 
@@ -280,13 +305,6 @@ fieldset {
     gap: 1rem;
   }
 
-  /* Ser inte så bra ut med current font */
-  /* TODO: Byt font eller ta bort */
-  /* legend,
-  label {
-    font-weight: 700;
-  } */
-
   &.form-about {
     grid-template-columns: 1fr 1fr;
 
@@ -323,25 +341,44 @@ textarea {
 input:user-invalid,
 select:user-invalid,
 textarea:user-invalid {
-  border-color: #dc2626;
+  border-color: var(--color-error);
 }
 
-/* input:user-valid,
-select:user-valid,
-textarea:user-valid {
-  border-color: green;
-} */
+.recipe-form div:has(#recipe-name:user-invalid)::after {
+  content: "✗ Ange ett receptnamn";
+  color: var(--color-error);
+}
+
+.recipe-form div:has(#recipe-ingredients:user-invalid)::after {
+  content: "✗ Ange ingredienser";
+  color: var(--color-error);
+}
+
+.recipe-form div:has(#recipe-instructions:user-invalid)::after {
+  content: "✗ Ange instruktioner";
+  color: var(--color-error);
+}
+
+.recipe-form div:has(#email:user-invalid)::after {
+  content: "✗ Ange en giltig e-postadress";
+  color: var(--color-error);
+}
 
 /* ===== FOOTER ===== */
 footer {
+  padding: 20px;
   margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  text-align: center;
+  gap: 24px;
 }
 
 .footer-bottom {
   text-align: center;
+  grid-column: 1 / -1;
 }
 
 /* ===== TEXT STYLING ===== */
@@ -397,9 +434,15 @@ ol {
   background-color: var(--color-box-dark);
 }
 
-/* ===== FOR MOBILE ===== */
+/* ===== MEDIA QUEERIES ===== */
 @media only screen and (max-width: 500px) {
   main {
     padding: 48px 16px 64px 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  footer {
+    grid-template-columns: 1fr;
   }
 }

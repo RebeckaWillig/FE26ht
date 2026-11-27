@@ -1,4 +1,4 @@
-### Receptsajten
+# Receptsajten
 
 Receptsajten is a recipe website developed as part of a frontend development course. The project is an exercise in building accessible, responsive, and well-structured web pages using HTML and CSS.
 
